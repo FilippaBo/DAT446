@@ -60,12 +60,22 @@ When you are done, run the test program, to make sure that everything works well
 def countWords(words, stopWords):
     frequencies = {}
     
-    for word in words:
-        
-        if word not in frequencies:
-            frequencies[word] = 1
-        else:
-            frequencies[word] += 1
+    for word in words: #tar bort stopwords
+        if not word in stopWords:
+             
+            if word not in frequencies:
+                frequencies[word] = 1
+            else:
+                frequencies[word] += 1
     
     return frequencies
-            
+
+
+def printTopMost(frequencies,n): 
+     x=sorted(frequencies.items(), key=lambda x: -x[1])
+     count=0
+     for word,freq in x:
+        if n==count:
+             break
+        print(word.ljust(20) + str(freq).rjust(5))
+        count=count+1 #skriver bara ut n antal ord
