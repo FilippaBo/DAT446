@@ -37,5 +37,6 @@ def main():
 
 main()
 
+#börja med att skriva cd lab1 i terminalen för att komma till rätt 
 #obs skriv python3 topmost.py eng_stopwords.txt examples/article1.txt 20 i terminalen varje gång
 
