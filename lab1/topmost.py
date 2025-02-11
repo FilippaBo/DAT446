@@ -1,16 +1,33 @@
 import wordfreq
 import sys
 
-#obs se till att close alltid finns
-inp_file = open(sys.argv[1]) # för mac
+
+
+
+inp_file = open(sys.argv[1]) # hämtar stopord från fil
+inp_file2 = open(sys.argv[2]) # hämtar textrader från artiklar
+article = int(sys.argv[3]) #gör om 20 från str till int
 #inp_file = open(sys.argv[1], encoding="utf-8")   för windows
 
-list_with_element=[]
-for line in inp_file:
-    list_with_element.append(line.strip())
-    
+stopwordlist=[]
+textrows=[]
 
+for line in inp_file:
+    line=line.strip()
+    stopwordlist.append(line)
+
+for line in inp_file2:
+    textrows.append(line)
 
 inp_file.close()
+inp_file2.close()
 
-print (list_with_element)
+
+def main():
+    words=wordfreq.tokenize(textrows)
+    count=wordfreq.countWords(words, stopwordlist)
+    wordfreq.printTopMost(count,article)
+
+main()
+
+
