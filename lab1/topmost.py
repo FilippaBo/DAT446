@@ -7,26 +7,28 @@ import urllib.request
 def main():
 
     inp_file = open(sys.argv[1]) # hämtar stopord från fil
-    inp_file2 = open(sys.argv[2]) # hämtar textrader från artiklar
     article = int(sys.argv[3]) #gör om 20 från str till int
     #inp_file = open(sys.argv[1], encoding="utf-8")   för windows
-
-    #response = urllib.request.urlopen(sys.argv[2])
-    #lines = response.read().decode("utf8").splitlines()
-
-    
     stopwordlist=[]
-    textrows=[]
 
     for line in inp_file:
         line=line.strip()
         stopwordlist.append(line)
-
-    for line in inp_file2:
-        textrows.append(line)
+    
+    if sys.argv[2].startswith("https://") or sys.argv[2].startswith("http://"):
+        response = urllib.request.urlopen(sys.argv[2])
+        lines = response.read().decode("utf8").splitlines()
+        textrows=[]
+        for line in lines:
+            textrows.append(line)
+    else: 
+        inp_file2 = open(sys.argv[2]) # hämtar textrader från artiklar
+        textrows=[]
+        for line in inp_file2:
+            textrows.append(line)
+        inp_file2.close()
 
     inp_file.close()
-    inp_file2.close()
 
 
     words=wordfreq.tokenize(textrows)
@@ -40,3 +42,4 @@ main()
 #börja med att skriva cd lab1 i terminalen för att komma till rätt 
 #obs skriv python3 topmost.py eng_stopwords.txt examples/article1.txt 20 i terminalen varje gång
 
+#python3 topmost.py eng_stopwords.txt http://www.gutenberg.org/files/15/15-0.txt 20
