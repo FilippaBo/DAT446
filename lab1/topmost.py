@@ -1,5 +1,6 @@
 import wordfreq
 import sys
+import urllib.request
 
 
 
@@ -10,6 +11,10 @@ def main():
     article = int(sys.argv[3]) #gör om 20 från str till int
     #inp_file = open(sys.argv[1], encoding="utf-8")   för windows
 
+    #response = urllib.request.urlopen(sys.argv[2])
+    #lines = response.read().decode("utf8").splitlines()
+
+    
     stopwordlist=[]
     textrows=[]
 
