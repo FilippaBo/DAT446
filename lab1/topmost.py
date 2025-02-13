@@ -22,7 +22,7 @@ def main():
         for line in lines:
             textrows.append(line)
     else: 
-        inp_file2 = open(sys.argv[2]) # hämtar textrader från artiklar
+        inp_file2 = open(sys.argv[2]) 
         textrows=[]
         for line in inp_file2:
             textrows.append(line)
@@ -39,7 +39,3 @@ def main():
 
 main()
 
-#börja med att skriva cd lab1 i terminalen för att komma till rätt 
-#obs skriv python3 topmost.py eng_stopwords.txt examples/article1.txt 20 i terminalen varje gång
-
-#python3 topmost.py eng_stopwords.txt http://www.gutenberg.org/files/15/15-0.txt 20
